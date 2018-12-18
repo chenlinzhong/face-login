@@ -10,7 +10,7 @@
 .project
 .phpintel
 
-# DIR
+# DIR  
 vendor
 
 # FILE
