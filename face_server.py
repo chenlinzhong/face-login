@@ -14,7 +14,7 @@ def handle_request(data):
         retData['data'] = face_handler.query_face(arrData['pic'])
 
     #添加
-    if arrData['cmd']=='add_index':
+    if arrData['cmd']=='add_index':    
         if face_handler.add_face_index(arrData['id'],arrData['pic']):
             retData['data']={'succ':1}
         else:
