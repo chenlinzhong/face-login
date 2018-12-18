@@ -26,7 +26,7 @@ def fmt_data(arrData):
     str_len="%04d"%str_len
     return str_len+str
 
-def trans_string(retData):
+def trans_string(retData): 
     fp=open('json_tmp.txt','w')
     print >> fp, retData
     fp.close()
