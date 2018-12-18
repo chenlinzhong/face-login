@@ -17,7 +17,7 @@ class Detect:
         results =self.detector.detect_face(img)
         boxes=[]
         key_points = []
-        if results is not None:
+        if results is not None:  
             #box框
             boxes=results[0]
             #人脸5个关键点
