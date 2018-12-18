@@ -10,7 +10,7 @@ minsize = 20  # minimum size of face
 threshold = [0.6, 0.7, 0.7]  # three steps's threshold
 factor = 0.709  # scale factor
 gpu_memory_fraction = 1.0
-
+  
 print('Creating networks and loading parameters')
 
 with tf.Graph().as_default():
