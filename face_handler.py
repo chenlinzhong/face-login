@@ -43,7 +43,7 @@ def add_face_index(id,pic):
 
 
 def query_face(pic):
-    align_face = get_align_pic(pic)
+    align_face = get_align_pic(pic) 
     if align_face is not None:
         #获取人脸特征
         face_vector = get_face_embed_vector(align_face)
