@@ -18,7 +18,7 @@ np.set_printoptions(suppress=True)
 gpu_memory_fraction = 0.3
 facenet_model_checkpoint = os.path.abspath(face_comm.get_conf('facedetect','model'))
 
-class Encoder:
+class Encoder:  
     def __init__(self):
         self.dectection= Detection()
         self.sess = tf.Session()
