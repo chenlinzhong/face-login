@@ -10,7 +10,7 @@ import  face_comm
 
 model= os.path.abspath(face_comm.get_conf('mtcnn','model'))
 class Detect:
-    def __init__(self):  
+    def __init__(self):
         self.detector = MtcnnDetector(model_folder=model, ctx=mx.cpu(0), num_worker=4, accurate_landmark=False)
     def detect_face(self,image):
         img = cv2.imread(image)
