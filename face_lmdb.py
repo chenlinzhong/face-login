@@ -16,7 +16,7 @@ class face_lmdb:
         wfp = evn.begin(write=True)
         wfp.put(key=id, value=face_comm.embed_to_str(vector))
         wfp.commit()
-        evn.close()
+        evn.close()    
 
 if __name__=='__main__':
     #插入数据
