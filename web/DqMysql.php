@@ -9,7 +9,7 @@ class DqMysql
 
         if(time() - $time >10){
             self::$objMysql = null;
-        }
+        }  
 
         if(empty($time) || empty(self::$objMysql)) {
 
