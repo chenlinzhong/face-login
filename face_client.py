@@ -14,7 +14,7 @@ def test_search():
 def test_add_face():
     str = '{"cmd":"add_index","id":14,"pic":"/Users/chenlinzhong/Documents/v_project/t_faceproject/web/images/meizi2.jpeg"}'
     str_len = len(str)
-    send_str = "%04d" % str_len + str
+    send_str = "%04d" % str_len + str  
     return send_str
 
 def test_detect_face():
