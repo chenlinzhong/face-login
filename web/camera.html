@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+<head>
+  <meta charset="utf-8">
+  <title>web RTC 测试</title>
+</head>
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/ccv.js"></script>
+<script src="./js/cascade.js"></script>
+<script src="./js/jquery.facedetection.js"></script>
+
+<style>
+
+</style>
+<body>
+  <div class="booth">
+    <video id="video" width="400" height="300" muted class="abs" ></video>
+    <canvas id="canvas" width="400" height="300"></canvas>
+  </div>
+
+  <script>
+      $(function () {
+           var canvas = document.getElementById('canvas');
+           var context = canvas.getContext('2d');
+           var video = document.getElementById('video'),
+               vendorUrl = window.URL || window.webkitURL;
+
+            //媒体对象
+            navigator.getMedia = navigator.getUserMedia ||
+                                 navagator.webkitGetUserMedia ||
+                                 navigator.mozGetUserMedia ||
+                                 navigator.msGetUserMedia;
+            navigator.getMedia({
+                video: true, //使用摄像头对象
+                audio: false  //不适用音频
+            }, function(strem){
+                console.log(strem);
+                video.src = vendorUrl.createObjectURL(strem);
+                video.play();
+            }, function(error) {
+            });
+
+            is_stop=0
+            video.ontimeupdate=function () {
+                if(is_stop) return
+                context.drawImage(video, 0, 0, video.width, video.height);
+                var base64 = canvas.toDataURL('images/png');
+                $('#canvas').faceDetection({
+                    complete: function (faces) {
+                        if(faces.length>=1){
+                            is_stop = 1;
+                            draw_face_box(faces)
+                            //upload(base64)
+
+                        }
+                        console.log(faces)
+                    }
+                });
+            }
+
+            //画出人脸区域
+            function draw_face_box(faces) {
+                var rect;
+                var i;
+                //context.clearRect(0, 0, canvas.width, canvas.height);
+                for(i=0;i<faces.length;i++) {
+                    rect = faces[i];
+                    context.strokeStyle = '#a64ceb';
+                    if(rect.width<60) return
+                    context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+                    context.font = '11px Helvetica';
+                    context.fillStyle = "#fff";
+                    context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+                    context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+                }
+            }
+
+            //上传人脸图片
+            function upload(base64) {
+                $.ajax({
+                    "type":"POST",
+                    "url":"/upload.php",
+                    "data":{'img':base64},
+                    'dataType':'json',
+                    beforeSend:function(){},
+                    success:function(result){
+                        console.log(result)
+                        img_path = result.data.file_path
+                    }
+                });
+            }
+      })
+
+
+  </script>
+</body>
+</html>

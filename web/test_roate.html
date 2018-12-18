@@ -1,0 +1,63 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>css3-rotate实现超炫环形旋转特效网页摘星分享-xw素材网</title>
+    <style>
+        * {padding:0; margin:0;}
+        body {background:#000;}
+        img {border:none;}
+        li {list-style:none;}
+        a { text-decoration:none;}
+
+        #div1 {width:100px; height:100px; position:absolute;}
+        #div1 img {position: absolute; left: 90px; top: 00px;}
+    </style>
+    <script>
+        window.onload=function ()
+        {
+            var oDiv=document.getElementById('div1');
+            var aImg=oDiv.children;
+
+            for(var i=0; i<aImg.length; i++)
+            {
+                aImg[i].I=5;
+                if(aImg[i].I==0)aImg[i].I=1;
+
+                aImg[i]._I=aImg[i].I;
+
+                aImg[i].style.width=500+i*10+'px';
+                aImg[i].style.margin=-10*i+'px';
+            }
+
+            setInterval(function ()
+            {
+                for(var i=0; i<aImg.length; i++)
+                {
+                    aImg[i].style.WebkitTransform='rotate('+aImg[i].I+'deg)';
+                    aImg[i].style.MozTransform='rotate('+aImg[i].I+'deg)';
+                    aImg[i].style.msTransform='rotate('+aImg[i].I+'deg)';
+
+                    aImg[i].I+=aImg[i]._I;
+                }
+            });
+
+        };
+
+        function rndNum(m, n)
+        {
+            n++;
+            return parseInt(Math.random()*(n-m)+m);
+        }
+    </script>
+</head>
+
+<body>
+<div id="div1">
+    <img src="./images/guanghuan.png">
+</div>
+<img src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=e5cd95b205f79052fb124f6c6d9abcaf/0823dd54564e92581460604f9082d158ccbf4e3f.jpg">
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="./js/jquery-3.2.1.min.js"></script>
+<script src="./js/ccv.js"></script>
+<script src="./js/cascade.js"></script>
+<script src="./js/jquery.facedetection.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<img id="picture" src="./images/meizi.jpeg">
+
+</body>
+
+<script>
+    $(function () {
+         $('#picture').faceDetection({
+                complete: function (faces) {
+                    console.log(faces);
+                }
+         });
+    });
+
+</script>
+
+</html>
