@@ -7,7 +7,7 @@ import  os
 
 
 class face_annoy:
-
+  
     def __init__(self):
         self.f                = int(face_comm.get_conf('annoy','face_vector'))
         self.annoy_index_path = os.path.abspath(face_comm.get_conf('annoy','index_path'))
