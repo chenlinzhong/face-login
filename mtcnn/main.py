@@ -12,7 +12,7 @@ detector = MtcnnDetector(model_folder='model', ctx=mx.cpu(0), num_worker = 4 , a
 
 img = cv2.imread('/Users/chenlinzhong/Downloads/test2.png')
 
-#run detector
+#run detector   
 results = detector.detect_face(img)
 print results
 if results is not None:
