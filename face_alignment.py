@@ -5,7 +5,7 @@ import  cv2
 import  numpy as np
 import  os
 import  time
-import  random
+import  random   
 
 class Alignment:
     def align_face(self,opic,faceKeyPoint):
