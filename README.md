@@ -174,7 +174,7 @@ if os.path.isdir(lmdb_file):
     annoy.build(self.num_trees)
     annoy.save(self.annoy_index_path)
 ```
-
+具体代码可参看face_annoy.py
 
 ### 人脸识别
 经过上面三个步骤后，得到人脸特征，在索引中查询最近几个点并就按欧式距离，如果距离小于0.6（更据实际情况设置的阈值）则认为是同一个人，然后根据id在数据库查找到对应人的信息即可
@@ -185,6 +185,8 @@ def query_vector(self,face_vector):
     n=int(face_comm.get_conf('annoy','num_nn_nearst'))
     return self.annoy.get_nns_by_vector(face_vector,n,include_distances=True)
 ```
+
+具体代码可参看face_annoy.py
 
 ### 安装部署
 
@@ -218,7 +220,20 @@ php -S 0.0.0.0:9988 -t ./web/
 
 ```
 
+最终效果：
 
+face_server加载mtcnn模型和facenet模型后等待人脸请求
+![image](./web/images/5.png)
+
+未注册识别失败
+![image](./web/images/1.png)
+
+人脸注册
+![image](./web/images/2.png)
+
+
+注册后登录成功
+![image](./web/images/3.png)
 
 
 
