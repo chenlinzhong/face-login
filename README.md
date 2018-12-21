@@ -236,6 +236,13 @@ face_server加载mtcnn模型和facenet模型后等待人脸请求
 ![image](./web/images/3.png)
 
 
+### 参考
+
+https://zhuanlan.zhihu.com/p/25025596
+https://github.com/spotify/annoy
+
+
+
 
 
 
