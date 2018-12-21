@@ -122,7 +122,7 @@ class Detect:
 
 ![image](./web/images/biaozhun.png)
 
-假设眼睛，鼻子三个点的坐标分别是a(10,30) b(20,30) c(15,45)，具体设置可参看config.ini文件alignment快配置项
+假设眼睛，鼻子三个点的坐标分别是a(10,30) b(20,30) c(15,45)，具体设置可参看config.ini文件alignment块配置项
 
 采用opencv仿射变换进行对齐,获取仿射变换矩阵
 ```
@@ -197,6 +197,8 @@ def query_vector(self,face_vector):
 
 模块间采用socket方式通信通信格式为: length+content
 
+face_server相关的配置在config.ini文件中
+
 1.使用镜像
 
 * face_serverdocker镜像: shareclz/python2.7.10-face-image
@@ -239,6 +241,7 @@ face_server加载mtcnn模型和facenet模型后等待人脸请求
 ### 参考
 
 https://zhuanlan.zhihu.com/p/25025596
+
 https://github.com/spotify/annoy
 
 
