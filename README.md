@@ -190,6 +190,19 @@ def query_vector(self,face_vector):
 
 ### 安装部署
 
+建表，用于存在用户注册信息，并在web/DqMysql.php 中配置数据库信息
+
+```
+create database face;
+CREATE TABLE `face_user` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `img` varchar(1024) NOT NULL DEFAULT '',
+ `user_name` varchar(1024) NOT NULL DEFAULT '',
+ `email` varchar(1024) NOT NULL DEFAULT '',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+```
+
 系统采用有两个模块组成：
 
 * face_web：提供用户注册登录，人脸采集，php语言实现
