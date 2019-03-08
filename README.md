@@ -223,6 +223,7 @@ face_server相关的配置在config.ini文件中
 ```
 docker run -it --name=face_server --net=host  -v /data1:/data1  shareclz/python2.7.10-face-image /bin/bash
 cd /data1/face-login
+rm -rf  /data1/face-login/models/facedetect/20180408-102900/._model-20180408-102900.meta
 python face_server.py
 ```
 
