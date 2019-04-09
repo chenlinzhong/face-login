@@ -230,7 +230,9 @@ python face_server.py
 3.安装face_web容器
 
 ```
-docker run -it --name=face_web --net=host  -v /data1:/data1  skiychan/nginx-php7 /bin/bash
+docker run -it --name=face_web --net=host  -v /data1:/data1   shareclz/php7.2.14 /bin/bash
+sed -i "s/extension='swoole.so'//g"  /usr/local/lib/php.ini          
+sed -i "s/extension='pthreads.so'//g" /usr/local/lib/php.ini          
 cd /data1/face-login;
 php -S 0.0.0.0:9988 -t ./web/ 
 
