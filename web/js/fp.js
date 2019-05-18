@@ -38,7 +38,12 @@ function open_camera() {
         audio: false  //不适用音频
     }, function (strem) {
         console.log(strem);
-        video.src = vendorUrl.createObjectURL(strem);
+        try {
+            video.src = vendorUrl.createObjectURL(strem);
+        } catch (e) {
+            console.log(e);
+            video.srcObject = strem;
+        }
         video.play();
     }, function (error) {
     });
